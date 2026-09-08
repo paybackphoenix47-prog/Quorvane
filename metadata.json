@@ -1,0 +1,6 @@
+{
+  "name": "QUORVANE",
+  "description": "SECURING THE DIGITAL FUTURE - A professional ethical hacking, penetration testing methodology, cybersecurity education, and practical cyber range training platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with cybersecurity learning progress, stats, and achievements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Auth UID" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "username": { "type": "string", "minLength": 2, "maxLength": 50, "description": "Display handle" },
+        "role": { "type": "string", "enum": ["trainee", "analyst", "operator", "admin"], "description": "Role level" },
+        "xp": { "type": "number", "description": "Total experience points" },
+        "level": { "type": "number", "description": "Operator tier level" },
+        "completedLabs": { "type": "array", "description": "List of completed cyber range lab IDs" },
+        "completedModules": { "type": "array", "description": "List of completed academy module IDs" },
+        "completedStages": { "type": "array", "description": "List of completed framework stages" },
+        "achievements": { "type": "array", "description": "Unlocked badge IDs" },
+        "createdAt": { "type": "string", "description": "Account ISO creation timestamp" },
+        "updatedAt": { "type": "string", "description": "Last update ISO timestamp" }
+      },
+      "required": ["id", "email", "username", "role", "xp", "level", "createdAt"]
+    },
+    "LabAttempt": {
+      "title": "LabAttempt",
+      "description": "Log of user activity in cyber range labs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Attempt UUID" },
+        "userId": { "type": "string", "description": "User UID who attempted the lab" },
+        "labId": { "type": "string", "description": "Lab identifier" },
+        "status": { "type": "string", "enum": ["in_progress", "completed", "failed"], "description": "Completion state" },
+        "score": { "type": "number", "description": "XP or score earned" },
+        "completedAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["id", "userId", "labId", "status", "score"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Live cybersecurity audit and training event log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Log UUID" },
+        "userId": { "type": "string", "description": "User UID" },
+        "action": { "type": "string", "description": "Action performed" },
+        "category": { "type": "string", "description": "Category (lab, academy, framework, tool)" },
+        "details": { "type": "string", "description": "Summary of action" },
+        "timestamp": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["id", "userId", "action", "category", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile, progress, credentials, and achievements"
+    },
+    "/users/{userId}/labAttempts/{attemptId}": {
+      "schema": "LabAttempt",
+      "description": "History of user cyber range executions"
+    },
+    "/users/{userId}/activities/{activityId}": {
+      "schema": "ActivityLog",
+      "description": "Audit trail of operator events"
+    }
+  }
+}
