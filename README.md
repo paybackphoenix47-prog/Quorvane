@@ -163,4 +163,5 @@ QUORVANE is developed strictly for authorized educational, research, and defensi
 
 ---
 
-   ## MIT License. Developed by the researcher as part of ND Computer Science project.
+   ## licence 
+   MIT License. Developed by the researcher as part of ND Computer Science project.
