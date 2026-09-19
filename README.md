@@ -163,5 +163,4 @@ QUORVANE is developed strictly for authorized educational, research, and defensi
 
 ---
 
-## 📄 License
-MIT License. Created with Google AI Studio.
+   ## MIT License. Developed by the researcher as part of ND Computer Science project.
